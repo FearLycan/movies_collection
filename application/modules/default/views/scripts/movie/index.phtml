@@ -1,0 +1,33 @@
+<div class="container">
+    <h1>Movies</h1>
+
+    <p>
+        <a href="movie/add" class="btn btn-success">Create</a>
+    </p>
+
+    <table class="table table-striped">
+        <thead class="thead-inverse">
+        <tr>
+            <th>#</th>
+            <th>Poster</th>
+            <th width="200px">Title</th>
+            <th>Description</th>
+            <th>Director</th>
+            <th>Grade</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($this->movies as $key => $movie): ?>
+            <tr>
+                <td><?= $key + 1 ?></td>
+                <td><img src="<?= $this->escape($movie->poster) ?>" height="65"></td>
+                <td><a href="movie/view?id=<?= $this->escape($movie->id) ?>"><?= $this->escape($movie->title) ?></a></td>
+                <td><?= $this->escape($movie->description) ?></td>
+                <td><?= $this->escape($movie->director) ?></td>
+                <td class="text-center"><?= $this->escape($movie->grade) ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+
+</div>
