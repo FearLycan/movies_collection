@@ -44,13 +44,28 @@ class MovieController extends Saffron_AbstractController
 
     public function viewAction()
     {
-
         $id = $this->_getParam('id');
 
-        $model = new Application_Model_DbTable_Movie();
-        $movie = $model->getAdapter()->quoteInto('id = ?', $id);
+//        $model = new Application_Model_DbTable_Movie();
+//        //$movie = $model->find($id);
+//        $movie = $model->select()->where('id = ?', (int) $id);
+//
+//        //$select = $this->getDbTable()->select()->where('token = ?', (string) $token);
+//        $row = $model->fetchRow($movie);
 
-        die(var_dump($movie));
+        //$this->view->movie = $movie;
+
+        //$movie = Application_Model_Movie::findOne($id);
+        //$movie = new Application_Model_Movie();
+        $model = Application_Model_Movie::findOne($id);
+
+//        //$a = $movie->findOne($id);
+//
+//        die(var_dump($a->id));
+
+        $this->view->assign([
+            'movie' => $model,
+        ]);
     }
 
     public function editAction($id)

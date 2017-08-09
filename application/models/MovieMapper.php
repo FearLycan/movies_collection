@@ -42,17 +42,19 @@ class Application_Model_MovieMapper
         }
     }
 
-    public function find($id, Application_Model_Movie $movie)
+    public function findOne($id)
     {
+
+        $movie = new Application_Model_Movie();
         $result = $this->getDbTable()->find($id);
         if (0 == count($result)) {
             return;
         }
         $row = $result->current();
-        $movie->setId($row->id)
-            ->setEmail($row->email)
-            ->setComment($row->comment)
-            ->setCreated($row->created);
+        $movie->setId($row->id);
+//            ->setEmail($row->email)
+//            ->setComment($row->comment)
+//            ->setCreated($row->created);
     }
 
     public function fetchAll()
