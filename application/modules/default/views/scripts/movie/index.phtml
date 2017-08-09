@@ -2,7 +2,7 @@
     <h1>Movies</h1>
 
     <p>
-        <a href="movie/add" class="btn btn-success">Create</a>
+        <a href="<?= $this->url(['controller' => 'movie', 'action' => 'add']) ?>" class="btn btn-success">Create</a>
     </p>
 
     <table class="table table-striped">
@@ -17,17 +17,24 @@
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($this->movies as $key => $movie): ?>
+
+
+        <?php foreach ($this->paginator as $key => $movie): ?>
             <tr>
                 <td><?= $key + 1 ?></td>
-                <td><img src="<?= $this->escape($movie->poster) ?>" height="65"></td>
-                <td><a href="movie/view?id=<?= $this->escape($movie->id) ?>"><?= $this->escape($movie->title) ?></a></td>
-                <td><?= $this->escape($movie->description) ?></td>
-                <td><?= $this->escape($movie->director) ?></td>
-                <td class="text-center"><?= $this->escape($movie->grade) ?></td>
+                <td><img src="<?= $this->escape($movie['poster']) ?>" height="65"></td>
+                <td>
+                    <a href="<?= $this->url(['controller' => 'movie', 'action' => 'view', 'id' => $movie['id']]) ?>"><?= $this->escape($movie['title']) ?></a>
+                </td>
+                <td><?= substr($this->escape($movie['description']), 0, 125) ?> [...]</td>
+                <td><?= $this->escape($movie['director']) ?></td>
+                <td class="text-center"><?= $this->escape($movie['grade']) ?></td>
             </tr>
         <?php endforeach; ?>
         </tbody>
     </table>
+
+
+    <?= $this->paginationControl($this->paginator, 'Sliding', 'helpers/paginator.phtml') ?>
 
 </div>
