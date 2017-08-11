@@ -3,19 +3,13 @@
 class  Application_Model_Movie
 {
 
-    protected $_id;
-    protected $_title;
-    protected $_poster;
-    protected $_description;
-    protected $_grade;
-    protected $_director;
+//    protected $_id;
+//    protected $_title;
+//    protected $_poster;
+//    protected $_description;
+//    protected $_grade;
+//    protected $_director;
 
-//    private $_dbTable;
-//
-//    public function __construct()
-//    {
-//        $this->_dbTable = new Application_Model_DbTable_Movie();
-//    }
 //
 //    public function createMovie($array)
 //    {
@@ -177,5 +171,35 @@ class  Application_Model_Movie
 
         return $row;
 
+    }
+
+    /**
+     * @param $data
+     */
+    public function save($data)
+    {
+        $model = new Application_Model_DbTable_Movie();
+        $model->insert($data);
+    }
+
+
+    /**
+     * @param $data
+     */
+    public static function update($data, $id)
+    {
+        $model = new Application_Model_DbTable_Movie();
+
+        $model->update($data, 'id = ' . $id);
+    }
+
+
+    /**
+     * @internal param $id
+     */
+    public function delete()
+    {
+        $model = new Application_Model_DbTable_Movie();
+        $model->delete('id = ' . $this->id);
     }
 }

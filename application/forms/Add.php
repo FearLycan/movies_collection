@@ -4,7 +4,7 @@ class Application_Form_Add extends Zend_Form
 {
     public function init()
     {
-        $this->addAttribs(['action' => 'add']);
+        //$this->addAttribs(['action' => 'add']);
 
         $this->setMethod('post');
 

@@ -16,9 +16,4 @@ class  Application_Model_DbTable_Movie extends Zend_Db_Table_Abstract
         return $selectMovies;
     }
 
-
-    public function getShortDescription()
-    {
-        return substr($this->description, 0, 125) . '...';
-    }
 }

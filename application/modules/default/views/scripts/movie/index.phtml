@@ -14,6 +14,7 @@
             <th>Description</th>
             <th>Director</th>
             <th>Grade</th>
+            <th width="140"></th>
         </tr>
         </thead>
         <tbody>
@@ -23,12 +24,25 @@
             <tr>
                 <td><?= $key + 1 ?></td>
                 <td><img src="<?= $this->escape($movie['poster']) ?>" height="65"></td>
-                <td>
+                <th>
                     <a href="<?= $this->url(['controller' => 'movie', 'action' => 'view', 'id' => $movie['id']]) ?>"><?= $this->escape($movie['title']) ?></a>
-                </td>
+                </th>
                 <td><?= substr($this->escape($movie['description']), 0, 125) ?> [...]</td>
                 <td><?= $this->escape($movie['director']) ?></td>
                 <td class="text-center"><?= $this->escape($movie['grade']) ?></td>
+                <td class="text-center">
+                    <a href="<?= $this->url(['controller' => 'movie', 'action' => 'edit', 'id' => $movie['id']]) ?>"
+                       style="width: 55px;" class="btn btn-primary btn-sm">
+                        Edytuj
+                    </a>
+
+                    <form style="display: inline-block;" method="post"
+                          action="<?= $this->url(['controller' => 'movie', 'action' => 'delete', 'id' => $movie['id']]) ?>">
+                        <input type="hidden" name="id" value="<?= $movie['id'] ?>">
+                        <button type="submit" class="btn btn btn-danger btn-sm" style="width: 55px;" onclick="return confirm('Are you sure?')">Usuń</button>
+                    </form>
+
+                </td>
             </tr>
         <?php endforeach; ?>
         </tbody>

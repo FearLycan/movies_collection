@@ -6,6 +6,19 @@
             <hr>
         </div>
 
+        <div class="col-12" style="margin-bottom: 20px;">
+                <a href="<?= $this->url(['controller' => 'movie', 'action' => 'edit', 'id' => $this->movie->id]) ?>"
+                   style="width: 55px;" class="btn btn-primary btn-sm">
+                    Edytuj
+                </a>
+
+            <form style="display: inline-block;" method="post"
+                  action="<?= $this->url(['controller' => 'movie', 'action' => 'delete', 'id' => $this->movie->id]) ?>">
+                <input type="hidden" name="id" value="<?= $this->movie->id ?>">
+                <button type="submit" class="btn btn btn-danger btn-sm" style="width: 55px;" onclick="return confirm('Are you sure?')">Usuń</button>
+            </form>
+        </div>
+
         <div class="col-3">
             <img class="img-fluid" src="<?= $this->movie->poster ?>" style="height: 350px;">
         </div>

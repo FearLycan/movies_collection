@@ -28,7 +28,8 @@
 
                 <?php if (isset($this->next)): ?>
                     <li class="page-item">
-                        <a class="page-link" href="<?= $this->url(['page' => $this->next]); ?>">Next</a>
+
+                        <a class="page-link" href="<?= $this->url(['controler' => 'movie', 'action' => 'index', 'page' => $this->next]) ?>">Next</a>
                     </li>
                 <?php else: ?>
                     <li class="page-item disabled">

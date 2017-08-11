@@ -54,6 +54,23 @@
     </div>
 </nav>
 
+
+<?php if (count($this->flashMessenger) != 0): ?>
+    <div class="container">
+        <?php foreach ($this->flashMessenger as $message): ?>
+
+            <?php foreach ($message as $key => $text): ?>
+                <div class="alert alert-<?= $key ?>" role="alert">
+                    <?= $text ?>
+                </div>
+            <?php endforeach; ?>
+
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>
+
+
+
 <?php echo $this->layout()->content; ?>
 <?php echo $this->inlineScript(); ?>
 
